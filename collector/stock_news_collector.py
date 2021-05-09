@@ -9,13 +9,16 @@ sys.path.append(os.path.dirname(LIB_DIR))
 
 from lib.rabbit_mq import AMQP
 
-CONFG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../config')
+CONFG_DIR = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), '../config')
+
 
 class StockNewsCollector:
     def __init__(self):
         self.amqp = AMQP()
         self.config = ConfigParser()
-        self.config.read(os.path.join(CONFG_DIR, self.__class__.__name__ + '.ini'))
+        self.config.read(os.path.join(
+            CONFG_DIR, self.__class__.__name__ + '.ini'))
 
     def start(self):
         self.amqp.connect()
